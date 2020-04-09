@@ -1,3 +1,28 @@
-<div>
-    <h2>Prêts pour les exercices ?!</h2>
+<div class="container u-full-width u-max-full-width">
+    <div class="row">
+        <button class="columns two button" [routerLink]="'..'">
+            <span>Retour</span>
+        </button>
+        <div class="columns eight">
+            <h2>Prêts pour les exercices sur les {{ kana }}?!</h2>
+        </div>
+    </div>
+    <section class="row">
+        <article class="columns four">
+            <button [routerLink]="['/exercices', kana, 'theme']">
+                <span>Faire un exercice de thème</span>
+            </button>
+        </article>
+        <article class="columns four">
+            <button [routerLink]="['/exercices', kana, 'version']">
+                <span>Faire un exercice de version</span>
+            </button>
+        </article>
+        <article class="columns four">
+            <button [routerLink]="['/exercices', kana, 'quizz']">
+                <span>Faire un quizz libre</span>
+            </button>
+        </article>
+
+    </section>
 </div>

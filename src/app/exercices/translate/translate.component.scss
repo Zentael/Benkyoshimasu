@@ -1,0 +1,62 @@
+div.container {
+    padding: 30px;
+    #counter{
+        border: 1px #bbb solid;
+        border-radius: 4px;
+        &.error{
+            border-color: red;
+        }
+        p{
+            padding: 10px;
+            &:nth-child(2){
+                font-size: 20px;
+            }
+        }
+
+    }
+    .bigSymbol{
+        font-size: 200px;
+        margin: 30px 20px;
+        text-align: center;
+
+        + div.row{
+            max-width: 50%;
+            margin: 0 auto;
+        }
+    }
+
+    #timer{
+        text-align: center;
+        margin-top: 30px;
+        p{
+            margin: 20px 0;
+            &:nth-child(2){
+                font-size: x-large;
+            }
+        }
+
+        div{
+            width: 240px;
+            border: 1px #bbb solid;
+            border-radius: 4px;
+            height: 20px;
+            margin: 0 auto;
+            span{
+                background-color: #da191f;
+                display: block;
+                height: 100%;
+                border-radius: 4px 0 0 4px;
+                transition: 1s;
+                transition-timing-function: linear;
+            }
+        }
+    }
+
+    label{
+        margin-top: 20px;
+        input{
+            display:block;
+            margin: 0 auto;
+        }
+    }
+}

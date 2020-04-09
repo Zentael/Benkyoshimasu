@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {slideInAnimation} from '../route-animation';
 
 @Component({
   selector: 'app-exercices',
   templateUrl: './exercices.component.html',
-  styleUrls: ['./exercices.component.css']
+  styleUrls: ['./exercices.component.scss'],
+  animations: [ slideInAnimation ]
 })
 export class ExercicesComponent implements OnInit {
+  constructor(private route: ActivatedRoute) {}
 
-  constructor() { }
+  kana: string;
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.kana = params.get('kana');
+    });
   }
-
 }

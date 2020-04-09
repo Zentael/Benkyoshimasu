@@ -1,0 +1,25 @@
+nav{
+  padding: 0 30px;
+  height: 100vh;
+  h1{
+    text-align: center;
+    font-size: xx-large;
+    padding: 30px;
+  }
+  > div{
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    line-height: 80px;
+    margin: 20px 0;
+    button{
+      text-decoration: none;
+      display:block;
+      height: inherit;
+      line-height: inherit;
+    }
+  }
+}
+

@@ -1,0 +1,32 @@
+<div class="container u-full-width u-max-full-width">
+    <header class="row">
+        <div class="columns three">&#8203;</div>
+        <div class="columns six">
+            <h2>Prêts pour les révisions sur les {{ kana }}?!</h2>
+        </div>
+        <div class="columns three">
+            <button class="button" [routerLink]="'..'">
+                <span>Retour</span>
+            </button>
+        </div>
+    </header>
+    <section>
+        <p class="row" *ngFor="let syllableRow of objectEntries(romajis); let i = index" [attr.data-index]="i">
+            <span class="columns two" *ngFor="let syllable of objectEntries(syllableRow[1]); let j = index" [attr.data-index]="j">
+                <span class="row">
+                    <span class="column one-half">{{syllable[1]}}</span>
+
+                    <span class="column one-half" *ngIf="kana === 'hiragana'; else elseBlock">
+                        {{hiraganas[syllableRow[0]][syllable[0]]}}
+                    </span>
+
+                    <ng-template #elseBlock>
+                        <span class="column one-half">
+                            {{katakanas[syllableRow[0]][syllable[0]]}}
+                        </span>
+                    </ng-template>
+                </span>
+            </span>
+        </p>
+    </section>
+</div>

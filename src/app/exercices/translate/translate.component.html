@@ -1,0 +1,51 @@
+<div class="container u-full-width u-max-full-width">
+    <div class="row">
+        <button class="button columns two" [routerLink]="'..'">
+            <span>Retour</span>
+        </button>
+    </div>
+
+    <div class="row">
+        <div class="columns three">&#8203;</div>
+        <div class="columns six">
+            <p class="bigSymbol">{{exericeType === 'version' ? correctAnswer.romaji : correctAnswer.kana}}</p>
+            <div class="row" *ngIf="['theme', 'version'].indexOf(exericeType) > -1; else elseBlock;">
+                <button
+                        class="column one-third"
+                        *ngFor="let answer of answers"
+                        (click)="onAnswering(answer)"
+                >
+                    {{exericeType === 'theme' ? answer.romaji : answer.kana}}
+                </button>
+            </div>
+            <ng-template #elseBlock>
+                <div *ngIf="timeLeft > 0; else timeOut">
+                    <label>
+                        <input
+                                (keyup)="onInputUp($event)"
+                                [(ngModel)]="userInput"
+                                type="text">
+                    </label>
+                    <div id="timer">
+                        <p>timer</p>
+                        <!--<p>{{timeLeft}}</p>-->
+                        <div>
+                            <span [style.width]="100*(120 - timeLeft)/120 + '%'"></span>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #timeOut>
+                    <div>
+                        <p>Le temps est écoulé !</p>
+                        <p>Ton score final est : {{nbPoints}}</p>
+                    </div>
+                </ng-template>
+            </ng-template>
+        </div>
+        <div class="columns three" id="counter" [ngClass]="{'error' : previousAnswer.romaji.length > 0}" *ngIf="exericeType !== 'quizz'">
+            <p>Nombre de points : {{nbPoints}}</p>
+            <p *ngIf="previousAnswer.kana.length + correctionAnswer.romaji.length > 0">La réponse était : {{previousAnswer.kana}} -> {{correctionAnswer.romaji}}</p>
+            <p *ngIf="previousAnswer.romaji.length > 0">Réponse proposée : {{previousAnswer.romaji}} ({{previousAnswer.kana}})</p>
+        </div>
+    </div>
+</div>
